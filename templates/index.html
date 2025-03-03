@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel アップロード</title>
+</head>
+<body>
+    <h1>Excel ファイルをアップロード</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <p>アラジンファイル選択: <input type="file" name="file1" accept=".xlsx, .xls"></p>
+        <p>format.xlsxを選択: <input type="file" name="file2" accept=".xlsx, .xls"></p>
+        <button type="submit">アップロード</button>
+    </form>
+
+    {% if filename %}
+        <p>商魂用csvファイルをダウンロード</p>
+        <a href="/download/{{ filename }}" id="downloadLink">ダウンロード</a>
+        <script>
+            document.getElementById("downloadLink").click(); // 自動ダウンロード
+        </script>
+    {% endif %}
+</body>
+</html>
